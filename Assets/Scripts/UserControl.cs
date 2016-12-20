@@ -8,30 +8,23 @@ public class UserControl : MonoBehaviour {
 
     float horizontal = 0.0f;
     bool jump = false;
-    Animator walk;
 
 
-    // Use this for initialization
     void Awake()
-    {//There are no Update before Awake
+    {
         pChar = GetComponent<PlayerCharacter>();
-
     }
     void Start()
-    {//There can be Update before Start
-        walk = GetComponent<Animator>();
+    {
+        
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         jump = Input.GetButtonDown("Jump");
-        //GetButtonDown, true when clik on button
-        //GetButton, true if pressed
-        //GetButtonUp, true when release button
-
         horizontal = Input.GetAxis("Horizontal");
-        walk.SetFloat("Speed", Mathf.Abs(horizontal));
+        
 
         if (InputManager.Devices.Count > 0)
         {
@@ -43,7 +36,6 @@ public class UserControl : MonoBehaviour {
         {
             horizontal = Mathf.Sign(horizontal);
         }
-
 
         pChar.Move(horizontal, jump);
     }
