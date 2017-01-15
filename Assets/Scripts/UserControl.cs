@@ -9,6 +9,7 @@ public class UserControl : MonoBehaviour {
     float horizontal = 0.0f;
     bool jump = false;
     bool crouch = false;
+    bool punch = false;
 
 
     void Awake()
@@ -21,10 +22,11 @@ public class UserControl : MonoBehaviour {
     }
 
   
-    void Update()
+    void FixedUpdate()
     {
         jump = Input.GetButtonDown("Jump");
         horizontal = Input.GetAxis("Horizontal");
+        punch = Input.GetButton("Fire1");
         
 
         if (InputManager.Devices.Count > 0)
@@ -39,5 +41,11 @@ public class UserControl : MonoBehaviour {
         }
 
         pChar.Move(horizontal, jump);
+        
+    }
+
+    void Update()
+    {
+        pChar.Attack(punch);
     }
 }

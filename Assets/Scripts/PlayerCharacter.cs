@@ -56,6 +56,11 @@ public class PlayerCharacter : MonoBehaviour {
         }
     }
 
+    public void Attack(bool punch)
+    {
+        anim.SetBool("Punch", punch);
+    }
+
     void Flip()
     {
         Vector3 theScale = transform.localScale;
