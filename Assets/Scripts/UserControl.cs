@@ -8,6 +8,7 @@ public class UserControl : MonoBehaviour {
 
     float horizontal = 0.0f;
     bool jump = false;
+    bool crouch = false;
 
 
     void Awake()
