@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour {
 
@@ -10,22 +11,35 @@ public class PlayerCharacter : MonoBehaviour {
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] float jumpForce = 350f;
+    [SerializeField] int currentHealth;
+    [SerializeField] int maxHealth = 100;
 
     Animator anim;
 
     void Start ()
     {
         anim = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
     }
 
-    private void Update()
+    void Update()
     {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     
 	void FixedUpdate ()
     {
+        //Checks if the player is on the ground or not
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         anim.SetBool("Ground", grounded);
 
@@ -68,5 +82,10 @@ public class PlayerCharacter : MonoBehaviour {
         transform.localScale = theScale;
 
         isTurnedRight = !isTurnedRight;
+    }
+
+    void Die() //Reloads the first scene upon death
+    {
+        SceneManager.LoadScene(0);
     }
 }
