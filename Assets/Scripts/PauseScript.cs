@@ -39,9 +39,14 @@ public class PauseScript : MonoBehaviour
 
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("FirstLevel");
+    }
+
     public void MainMenu()
     {
-        SceneManager.LoadScene("menu");
+        SceneManager.LoadScene("MainMenu");
         Paused = false;
 
     }
