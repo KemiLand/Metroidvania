@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour {
 
     [SerializeField] float speed;
     [SerializeField] bool isTurnedRight = true;
     [SerializeField] bool grounded = false;
-    [SerializeField] float groundRadius = 0.2f;
+    [SerializeField] float groundRadius = 0.01f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] float jumpForce = 350f;
-    [SerializeField] int currentHealth;
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] int maxHealth = 5;
+    public int currentHealth; // Public because of the HudScript
 
     Animator anim;
 
