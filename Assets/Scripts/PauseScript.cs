@@ -36,7 +36,6 @@ public class PauseScript : MonoBehaviour
     public void Resume()
     {
         Paused = false;
-
     }
 
     public void Restart()
@@ -48,7 +47,6 @@ public class PauseScript : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Paused = false;
-
     }
 
     public void Quit()

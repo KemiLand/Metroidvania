@@ -85,6 +85,11 @@ public class PlayerCharacter : MonoBehaviour {
         isTurnedRight = !isTurnedRight;
     }
 
+    public void Damage(int damage)
+    {
+        currentHealth -= damage;
+    }
+
     void Die() //Reloads the first scene upon death
     {
         SceneManager.LoadScene(0);

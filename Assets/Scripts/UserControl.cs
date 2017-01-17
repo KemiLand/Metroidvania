@@ -22,7 +22,7 @@ public class UserControl : MonoBehaviour {
     }
 
   
-    void FixedUpdate()
+    void Update()
     {
         jump = Input.GetButtonDown("Jump");
         horizontal = Input.GetAxis("Horizontal");
@@ -44,8 +44,8 @@ public class UserControl : MonoBehaviour {
         
     }
 
-    void Update()
+    /*void Update()
     {
         pChar.Attack(punch);
-    }
+    }*/
 }

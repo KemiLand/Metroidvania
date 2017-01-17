@@ -4,10 +4,8 @@ using UnityEngine.UI;
 
 public class HudScript : MonoBehaviour {
 
-    public Sprite[] HeartSprites;
-
-    public Image HeartUI;
-
+    [SerializeField] Sprite[] HeartSprites;
+    [SerializeField] Image HeartUI;
     private PlayerCharacter player;
 
     void Start()
@@ -17,7 +15,16 @@ public class HudScript : MonoBehaviour {
 
     void Update()
     {
-        HeartUI.sprite = HeartSprites[player.currentHealth];
+        if(player.currentHealth < 0)
+        {
+            player.currentHealth = 0;
+        }
+        if(player.currentHealth > 5)
+        {
+            player.currentHealth = 5;
+        }
+
+        HeartUI.sprite = HeartSprites[player.currentHealth]; // Changes the hearts sprite according to the player's health
     }
 
 }
