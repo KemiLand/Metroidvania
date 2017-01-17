@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class HudScipt : MonoBehaviour {
+public class HudScript : MonoBehaviour {
 
     public Sprite[] HeartSprites;
 
