@@ -12,13 +12,9 @@ public class UserControl : MonoBehaviour {
     bool punch = false;
 
 
-    void Awake()
-    {
-        pChar = GetComponent<PlayerCharacter>();
-    }
     void Start()
     {
-        
+        pChar = GetComponent<PlayerCharacter>();
     }
 
   
