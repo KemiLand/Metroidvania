@@ -2,7 +2,8 @@
 using System.Collections;
 using InControl;
 
-public class UserControl : MonoBehaviour {
+public class UserControl : MonoBehaviour
+{
 
     PlayerCharacter pChar;
 
@@ -36,7 +37,12 @@ public class UserControl : MonoBehaviour {
             horizontal = Mathf.Sign(horizontal);
         }
 
-        pChar.Move(horizontal, jump);
+        
         pChar.Attack(punch);
+    }
+
+    void FixedUpdate()
+    {
+        pChar.Move(horizontal, jump);
     }
 }

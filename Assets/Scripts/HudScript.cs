@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class HudScript : MonoBehaviour {
+public class HudScript : MonoBehaviour
+{
 
     [SerializeField] Sprite[] HeartSprites;
     [SerializeField] Image HeartUI;

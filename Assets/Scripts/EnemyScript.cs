@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyScript : MonoBehaviour {
+public class EnemyScript : MonoBehaviour
+{
 
     [SerializeField] float velocity = 0.2f;
     [SerializeField] int maxHealth = 5;
     [SerializeField] int currentHealth;
+    [SerializeField] float timeToDie = 0.8f;
 
     [SerializeField] Transform sightStart;
     [SerializeField] Transform sightEnd;
@@ -13,10 +15,13 @@ public class EnemyScript : MonoBehaviour {
 
     [SerializeField] bool colliding;
 
+    Animator anim;
+
     // Use this for initialization
     void Start ()
     {
         currentHealth = maxHealth;
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -57,7 +62,10 @@ public class EnemyScript : MonoBehaviour {
 
     void Die()
     {
-
+        velocity = 0.0f;
+        anim.SetBool("killed", true);
+        Destroy(this.gameObject, timeToDie);
+        gameObject.tag = "Dead";
     }
 
     void Flip()
