@@ -41,11 +41,6 @@ public class UserControl : MonoBehaviour {
         }
 
         pChar.Move(horizontal, jump);
-        
-    }
-
-    /*void Update()
-    {
         pChar.Attack(punch);
-    }*/
+    }
 }
