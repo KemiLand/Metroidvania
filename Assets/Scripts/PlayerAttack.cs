@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour {
 
         if(attacking)
         {
-            if(attackTimer > 0)
+            if(attackTimer > 0) //Can't spam the attack too much
             {
                 attackTimer -= Time.deltaTime;
             }

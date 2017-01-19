@@ -34,6 +34,7 @@ public class PlayerCharacter : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
     }
@@ -52,7 +53,6 @@ public class PlayerCharacter : MonoBehaviour
     {
         transform.position += new Vector3(speed * horizontal * Time.deltaTime, 0.0f, 0.0f);
         
-
         //Horizontal is used to start the walking animation
         anim.SetFloat("Speed", Mathf.Abs(horizontal));
 

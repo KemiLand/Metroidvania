@@ -6,12 +6,6 @@ public class GameManager : MonoBehaviour
 {
     float timeToEnd = 2;
 
-    // Use this for initialization
-    void Start ()
-    {
-        
-	}
-	
 	// Update is called once per frame
 	void Update ()
     {
@@ -19,7 +13,7 @@ public class GameManager : MonoBehaviour
 
         if(enemies == null)
         {
-            if(timeToEnd > 0)
+            if(timeToEnd > 0) // If all enemies are dead, show the win screen after 2 seconds
             {
                 timeToEnd -= Time.deltaTime;
             }

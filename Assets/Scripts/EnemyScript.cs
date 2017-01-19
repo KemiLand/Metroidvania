@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int currentHealth;
     [SerializeField] float timeToDie = 0.8f;
     [SerializeField] int enemyDamage = 3;
-    private int playerHit = 0;
+    private int playerHit = 0; // Preventing the monster to spam hits on the player
 
     [SerializeField] Transform sightStart;
     [SerializeField] Transform sightEnd;
@@ -39,7 +39,10 @@ public class EnemyScript : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = new Vector3(velocity, 0.0f, 0.0f);
 
+        //Checks if the monster walked into a wall
         colliding = Physics2D.Linecast(sightStart.position, sightEnd.position, detecting);
+
+        //Check if the monster walked into the player character
         collidingPlayer = Physics2D.Linecast(playerCheckStart.position, playerCheckEnd.position, detectingPlayer);
 
         if (colliding)
@@ -68,16 +71,18 @@ public class EnemyScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
     }
 
-    void OnDrawGizmos() //Draws a line showing what makes the enemy rotate
+    void OnDrawGizmos() 
     {
+        //Draws a line showing what makes the enemy rotate
         Gizmos.color = Color.magenta;
-
         Gizmos.DrawLine(sightStart.position, sightEnd.position);
 
+        //Draws a line showing where the player gets hit
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(playerCheckStart.position, playerCheckEnd.position);
     }

@@ -10,21 +10,17 @@ public class UserControl : MonoBehaviour
     float horizontal = 0.0f;
     bool jump = false;
     bool crouch = false;
-    bool punch = false;
-
 
     void Start()
     {
         pChar = GetComponent<PlayerCharacter>();
     }
 
-  
     void Update()
     {
         jump = Input.GetButtonDown("Jump");
         horizontal = Input.GetAxis("Horizontal");
         
-
         if (InputManager.Devices.Count > 0)
         {
             var inputDevice = InputManager.Devices[0];
