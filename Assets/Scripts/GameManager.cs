@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("VictoryScreen");
             }
         }
 	}

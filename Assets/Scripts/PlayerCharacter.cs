@@ -93,6 +93,6 @@ public class PlayerCharacter : MonoBehaviour
 
     void Die() //Reloads the first scene upon death
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("DeathScreen");
     }
 }
