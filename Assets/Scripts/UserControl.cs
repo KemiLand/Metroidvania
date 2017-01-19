@@ -23,7 +23,6 @@ public class UserControl : MonoBehaviour
     {
         jump = Input.GetButtonDown("Jump");
         horizontal = Input.GetAxis("Horizontal");
-        punch = Input.GetButton("Fire1");
         
 
         if (InputManager.Devices.Count > 0)
@@ -36,9 +35,6 @@ public class UserControl : MonoBehaviour
         {
             horizontal = Mathf.Sign(horizontal);
         }
-
-        
-        pChar.Attack(punch);
     }
 
     void FixedUpdate()

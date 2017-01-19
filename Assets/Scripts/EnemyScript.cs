@@ -58,6 +58,7 @@ public class EnemyScript : MonoBehaviour
     public void Damage(int damage)
     {
         currentHealth -= damage;
+        //GetComponent<Animation>().Play("Player_RedFlash");
     }
 
     void Die()
