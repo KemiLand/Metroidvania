@@ -31,10 +31,11 @@ public class UserControl : MonoBehaviour
         {
             horizontal = Mathf.Sign(horizontal);
         }
+        pChar.Move(horizontal, jump);
     }
 
     void FixedUpdate()
     {
-        pChar.Move(horizontal, jump);
+        
     }
 }
