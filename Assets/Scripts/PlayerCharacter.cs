@@ -89,6 +89,7 @@ public class PlayerCharacter : MonoBehaviour
     public void Damage(int damage)
     {
         currentHealth -= damage;
+        GetComponent<Animation>().Play("Player_RedFlash");
     }
 
     void Die() //Reloads the first scene upon death
