@@ -8,12 +8,21 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int maxHealth = 5;
     [SerializeField] int currentHealth;
     [SerializeField] float timeToDie = 0.8f;
+    [SerializeField] int enemyDamage = 3;
+    private int playerHit = 0;
 
     [SerializeField] Transform sightStart;
     [SerializeField] Transform sightEnd;
     [SerializeField] LayerMask detecting;
 
+    [SerializeField] Transform playerCheckStart;
+    [SerializeField] Transform playerCheckEnd;
+    [SerializeField] LayerMask detectingPlayer;
+
     [SerializeField] bool colliding;
+    [SerializeField] bool collidingPlayer;
+
+    private PlayerCharacter player;
 
     Animator anim;
 
@@ -22,6 +31,7 @@ public class EnemyScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>();
     }
 	
 	// Update is called once per frame
@@ -30,11 +40,25 @@ public class EnemyScript : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector3(velocity, 0.0f, 0.0f);
 
         colliding = Physics2D.Linecast(sightStart.position, sightEnd.position, detecting);
+        collidingPlayer = Physics2D.Linecast(playerCheckStart.position, playerCheckEnd.position, detectingPlayer);
 
-        if(colliding)
+        if (colliding)
         {
             Flip();
             velocity *= -1;
+        }
+
+        if(collidingPlayer)
+        {
+            if (playerHit == 0)
+            {
+                playerHit = 1;
+                player.Damage(enemyDamage);
+            } 
+        }
+        else
+        {
+            playerHit = 0;
         }
 
         if (currentHealth > maxHealth)
@@ -53,6 +77,9 @@ public class EnemyScript : MonoBehaviour
         Gizmos.color = Color.magenta;
 
         Gizmos.DrawLine(sightStart.position, sightEnd.position);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(playerCheckStart.position, playerCheckEnd.position);
     }
 
     public void Damage(int damage)
